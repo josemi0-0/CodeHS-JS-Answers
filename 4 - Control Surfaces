@@ -1,0 +1,240 @@
+4.1 Booleans
+/* This program should declare a boolean that describes whether or
+ * not you have a cat. Then you should print out an informative
+ * message to the user. */
+function start(){
+	var haveCat = true;
+	println("Do you have a cat? " + haveCat);
+}
+
+4.2 Logic
+  "Can you graduate?"
+function start(){
+	var enoughCredits = readBoolean("Do you have enough credits? ");
+	var metRequirements = readBoolean("Have you met the requirements? ");
+	var graduating = enoughCredits && metRequirements;
+	println("Are you graduating? " + graduating);
+}
+  "School is out"
+function start(){
+    //Write your code here
+    var weekday = readBoolean("Is today a weekday? ");
+    var holiday = readBoolean("Is today a holiday? ");
+    var noSchoolToday = !weekday || holiday;
+    
+    println("Do we have school today? " + noSchoolToday);
+}
+
+4.3 Comparison
+  "Rolling Dice"
+function start(){
+	var diceOne = readInt("What was your first roll? ");
+	var diceTwo = readInt("What was your second roll? ");
+	
+	if (diceOne == diceTwo){
+	    var rolledDoubles = true;
+	} else {
+	    var rolledDoubles = false;
+	}
+	print("Did you roll double? " + rolledDoubles);
+}
+  "All Star"
+function start(){
+	var points = readInt("Points per game? ");
+	var rebounds = readInt("Rebounds? ");
+	var assists = readInt("Assists? ");
+	
+	if (points >= 25 || (points >= 10 && rebounds >= 10 && assists >= 10)){
+	    print(true);
+	} else {
+	    print(false);
+	}
+}
+
+4.4 If Statements
+  "Teenagers"
+function start(){
+    var age = readInt("How old are you? ");
+    if (age < 20 && age >= 13){
+        print("yes");
+    } else {
+        print("no");
+    }
+}
+  "Meal Planner"
+function start(){
+	var food = readLine("What would you like to eat? ");
+	if (food == "breakfast"){
+	    print("Something");
+	} else if (food == "dinner"){
+	    print("Something else");
+	} else if (food = "lunch"){
+	    print("IDK");
+	}
+}
+
+4.5 Key Events
+var circle = new Circle(50);
+
+function start(){
+    circle.setPosition(getWidth()/2, getHeight()/2);
+    circle.setColor(Color.red);
+    add(circle);    
+    keyDownMethod(circleSize);
+}
+
+function circleSize(e){
+    if(e.keyCode == Keyboard.UP) {
+        circle.setRadius(circle.getRadius()+10);
+    }
+    if(e.keyCode == Keyboard.DOWN) {
+        circle.setRadius(circle.getRadius()-10);
+    }
+}
+
+4.6 For Loops
+  "Meme Text Generator"
+function start(){
+	for(let i = 0; i < 50; i++) {
+	    println("Text");
+	}
+}
+  "The Worm"
+var NUM_CIRCLES = 30;
+var rad = (getWidth() / NUM_CIRCLES) / 2;
+// This graphics program should draw a worm. 
+// A worm is made up of NUM_CIRCLES circles. 
+// Use a for loop to draw the worm, 
+// centered vertically in the screen. 
+// Also, be sure that the worm is still drawn across 
+// the whole canvas, even if the value of NUM_CIRCLES is changed.
+function start(){
+	for(let i = 0; i < NUM_CIRCLES; i++){
+	    var wormCircle = new Circle(rad);
+	    wormCircle.setPosition(rad * i * 2 + rad, getHeight()/2);
+	    add(wormCircle);
+	}
+}
+  "Caterpillar"
+var NUM_CIRCLES = 15;
+var rad = (getWidth() / NUM_CIRCLES) / 2;
+// This graphics program should draw a caterpillar. A caterpillar has NUM_CIRCLES
+// circles. Every other circle is a different color, the even circles are red, and
+// the odd circles are green. Use a for loop to draw the caterpillar, centered 
+// vertically in the screen.
+function start(){
+	for(let i = 0; i < NUM_CIRCLES; i++){
+	    var wormCircle = new Circle(rad);
+	    wormCircle.setPosition(rad * i * 2 + rad, getHeight()/2);
+	    if (i % 2 == 0){
+	        wormCircle.setColor(Color.green)
+	    } else {
+	        wormCircle.setColor(Color.red)
+	    }
+	    add(wormCircle);
+	}
+}
+
+4.7 General For Loops
+  "Count by Sevens"
+function start(){
+	for (let i = 0; i < 500; i += 7){
+	    println(i);
+	}
+}
+  "Powers of Two"
+function start(){
+	for(let i = 0; 2 ** i < 1000000; i++){
+	    println(2 ** i)
+	}
+}
+
+4.8 For Loop Practice
+  "Better Sum"
+function start(){
+	var min = readInt("First: ");
+	var max = readInt("Second: ");
+	var count = 0;
+	
+	for (let i = min; i <= max; i++){
+	    count += i;
+	}
+	print(count)
+}
+  "Factorial"
+let N = 5;
+let factorial = 1;
+
+for (let i = N; i > 0; i--){
+    factorial *= i;
+}
+
+println(factorial);
+  "All Dice Values"
+var SIDES_ON_DICE = 6;
+
+function start() {
+	for (let i = 1; i <= SIDES_ON_DICE; i++){
+	    for(let x = 1; x <= SIDES_ON_DICE; x++){
+	        println(i + "," + x);
+	    }
+	}
+}
+
+4.9 Random Number
+  "Lots of Dice"
+function start(){
+	for (let i = 0; 100 > i; i++){
+	    println(Randomizer.nextInt(1,6));
+	}
+}
+  "Random Color Square"
+var SIDE_LENGTH = 100;
+
+function start(){
+	var square = new Rectangle(SIDE_LENGTH,SIDE_LENGTH);
+	square.setPosition(getWidth()/2, getHeight()/2);
+	square.setColor(Randomizer.nextColor());
+	add(square);
+}
+
+4.10 While Loops
+  "Inventory"
+var STARTING_ITEMS_IN_INVENTORY = 20;
+
+function start(){
+	var numItems = STARTING_ITEMS_IN_INVENTORY;	
+	
+	while(numItems > 0){
+	    println("We have " + numItems + " items in inventory");
+	    var buy = readInt("How many would you like to buy?");
+	    if (buy > numItems){
+	        println("There is not enough in inventory for that purchase.");
+	    } else {
+	        numItems -= buy;
+	        if (numItems == 0){
+	            println("All out!");
+	        } else {
+	            println("Now we have " + numItems + " items in inventory");
+	        }
+	    }
+	}
+}
+  "Fibonacci"
+var MAX = 1000;
+
+function start(){
+    let F = 1;
+    let S = 1;
+    println(F);
+    
+    while (S <= MAX){
+        println(S);
+        let next = F + S;
+        F = S;
+        S = next;
+    }
+}
+
+4.11 Loop And A Half
+W.I.P
